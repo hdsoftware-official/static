@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js runner">
+<head>
+  <base href="https://actigo.anvil.app/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="expires" content="0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="never"> <!-- Yes, this is "legacy", but Safari and Edge don't support 'no-referrer' yet -->
+
+  <meta name="og:title" content="Actigo Missouri">
+  <meta name="og:type" content="website">
+  <meta name="og:url" content="https://actigo.anvil.app">
+  <meta name="og:image" content="https://anvil.works/img/logo-square-padded.png">
+  <!--<xmeta name="og:image:width" content="400">-->
+  <!--<xmeta name="og:image:height" content="400">-->
+  <!--<xmeta name="og:site_name" content="Anvil">-->
+  <meta name="og:description" content="This app is built with Anvil, the platform for building full-stack web apps quickly and robustly.">
+
+
+  <title>Actigo Missouri</title>
+
+  <link rel="stylesheet" href="https://anvil.works/runtime/css/bootstrap.css?buildTime=1594366113" crossorigin/>
+  <link rel="stylesheet" href="https://anvil.works/runtime/css/bootstrap-theme.min.css?buildTime=1594366113" crossorigin/>
+  <link rel="stylesheet" href="https://anvil.works/runtime/css/runner.css?buildTime=1594366113" crossorigin/>
+  <link rel="stylesheet" href="https://anvil.works/runtime/css/daterangepicker.css" crossorigin/>
+  <link rel="stylesheet" href="https://anvil.works/runtime/node_modules/animate.css/animate.min.css" crossorigin/>
+
+  <link rel="stylesheet" href="https://anvil.works/runtime/css/font-awesome.min.css" crossorigin/>
+
+  <style>
+    #loadingSpinner {
+      background-image: url(https://anvil.works/runtime/img/loading.gif);
+    }
+
+    .plotly-loading-spinner {
+      background-image: url(https://anvil.works/runtime/img/loading.gif);
+    }
+  </style>
+
+  <!-- Favicon things -->
+
+  <link rel="icon" href="https://anvil.works/favicon-96x96.png">
+  <link rel="manifest" href="https://actigo.anvil.app/_/manifest.json?buildTime=1594366113">
+  <meta name="apple-mobile-web-app-title" content="Actigo Missouri">
+  <meta name="application-name" content="Actigo Missouri">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-TileImage" content="https://anvil.works/mstile-144x144.png">
+  <meta name="theme-color" content="#2196F3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <style></style>
+  <style>/**
+ This CSS implements the Material Design look and feel for Anvil apps.
+ **/
+
+/* Stop panel-cols cutting off drop shadows */
+.anvil-panel-col {
+  padding-bottom: 10px;
+  margin-bottom: -10px;
+}
+
+.content > .placeholder {
+  margin: 16px;
+  color: #888;
+  font-size: 18px;
+  outline: 1px dotted;
+  padding: 16px;
+  text-align: center;
+}
+
+/* Put things on a 4px grid (none of this 7px nonsense) */
+.has-text .anvil-component-icon.left-icon { margin-right: 8px; }
+.has-text .anvil-component-icon.right-icon { margin-left: 8px; }
+
+a>.anvil-component-icon.left_edge-icon,
+a>.anvil-component-icon.right_edge-icon,
+.anvil-label>.anvil-component-icon.left_edge-icon,
+.anvil-label>.anvil-component-icon.right_edge-icon {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.anvil-label>.label-text, a>.link-text {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.file-loader>label {
+    padding: 8px;
+}
+.checkbox label, .radio label {
+    padding-top: 8px; padding-right: 8px; padding-bottom: 8px;
+}
+.anvil-spacing-above-none { margin-top: 0px; }
+.anvil-spacing-above-small { margin-top: 4px; }
+.anvil-spacing-above-medium { margin-top: 8px; }
+.anvil-spacing-above-large { margin-top: 16px; }
+.anvil-spacing-below-none { margin-bottom: 0px; }
+.anvil-spacing-below-small { margin-bottom: 4px; }
+.anvil-spacing-below-medium { margin-bottom: 8px; }
+.anvil-spacing-below-large { margin-bottom: 16px; }
+
+
+.col-padding.col-padding-tiny { padding: 0 2px; }
+.column-panel.col-padding-tiny > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter { margin: 0 -2px; }
+
+.col-padding.col-padding-small { padding: 0 4px; }
+.column-panel.col-padding-small > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter { margin: 0 -4px; }
+
+.col-padding.col-padding-medium { padding: 0 8px; }
+.column-panel.col-padding-medium > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter { margin: 0 -8px; }
+
+.col-padding.col-padding-large { padding: 0 12px; }
+.column-panel.col-padding-large > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter { margin: 0 -12px; }
+
+.col-padding.col-padding-huge { padding: 0 20px; }
+.column-panel.col-padding-huge > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter { margin: 0 -20px; }
+
+.flow-panel.flow-spacing-tiny > .flow-panel-gutter { margin: 0 -2px; }
+.flow-panel.flow-spacing-tiny > .flow-panel-gutter > .flow-panel-item { margin: 0 2px; }
+
+.flow-panel.flow-spacing-small > .flow-panel-gutter { margin: 0 -4px; }
+.flow-panel.flow-spacing-small > .flow-panel-gutter > .flow-panel-item { margin: 0 4px; }
+
+.flow-panel.flow-spacing-medium > .flow-panel-gutter { margin: 0 -8px; }
+.flow-panel.flow-spacing-medium > .flow-panel-gutter > .flow-panel-item { margin: 0 8px; }
+
+.flow-panel.flow-spacing-large > .flow-panel-gutter { margin: 0 -12px; }
+.flow-panel.flow-spacing-large > .flow-panel-gutter > .flow-panel-item { margin: 0 12px; }
+
+.flow-panel.flow-spacing-huge > .flow-panel-gutter { margin: 0 -20px; }
+.flow-panel.flow-spacing-huge > .flow-panel-gutter > .flow-panel-item { margin: 0 20px; }
+
+
+/* Typography */
+body {
+  font-family: Roboto, Noto, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4286;
+  background-color: #fafafa;
+}
+
+@media print {
+  body {
+    background-color: white;
+  }
+}
+
+a, a:focus {
+  text-decoration: none;
+  color: #1976D2;
+}
+
+a:hover, a:active {
+  color: #2196F3;
+}
+
+.anvil-label {
+/*  font-size: 16px;*/
+}
+
+.anvil-role-subheading {
+  font-size: 16px;
+  line-height: 24dp;
+}
+
+.anvil-role-headline {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.anvil-role-input-prompt {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.anvil-role-display-4 {
+  font-size: 112px;
+  font-weight: light;
+}
+
+.anvil-role-text {
+  font-size: 14px;
+}
+.anvil-role-text > .label-text, .anvil-role-text .link-text {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Page structure: App bar with optional left nav */
+.structure {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 0; /* To make flex-grow work in IE */
+}
+
+/* However, this breaks the designer's height measurement. IE isn't supported for the designer, so set it back. */
+.designer .structure {
+  height: initial;
+}
+
+.app-bar {
+  flex: 0 0;
+  flex-basis: auto;
+  flex-basis: content;
+}
+
+.nav-holder {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+/* Mobile and desktop margins for content */
+.content > * > .anvil-container {
+  padding: 8px;
+}
+
+@media(min-width:991px) {
+  .content > * > .anvil-container {
+    padding: 16px 24px;
+  }
+}
+
+.content .anvil-measure-this {
+  padding-bottom: 1px; /* Prevent margin collapse messing up embedding */
+}
+
+/* Allow overflows to show drop shadows in ColumnPanels
+   This can create unwanted scrollbars; we compensate for this at the top level with .nav-holder .content {overflow-x: hidden;}
+*/
+.anvil-container-overflow {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+
+/* Desktop: Nav bar pinned */
+
+.nav-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-holder .left-nav {
+  position: relative;
+  flex-shrink: 0;
+  min-width: 160px;
+  max-width: 400px;
+}
+
+.nav-shield {
+  display: none;
+}
+
+/* Mobile: Nav bar is a modal overlay */
+
+@media(max-width:998px) {
+  html:not(.designer) .nav-holder {
+    display: block;
+  }
+  html:not(.designer) .nav-holder .left-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: calc(100% - 56px);
+    max-width: 360px;
+    z-index: 3;
+    border-right: none;
+  /* 16dp */ box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+
+    display: none;
+    transition: right 0.5s;
+  }
+  
+  html:not(.designer) .nav-holder .left-nav.shown {
+    display: block;
+  }
+  .nav-shield.shown {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.2);
+  }
+ }
+
+.nav-holder .left-nav, .left-nav-placeholder {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-right: 1px solid #e0e0e0;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0,0,0,0.87);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.left-nav-placeholder {
+  display: block;
+  padding: 8px;
+  line-height: 1;
+  width: 58px;
+}
+.left-nav-placeholder .prompt {
+  display: inline-block;
+  white-space: nowrap;
+  transform: translate(-50%,0) rotate(-90deg) translate(-50%,0) translate(15px,16px);
+  padding: 16px 16px;
+  color: #888;
+  outline: 1px dotted #888;
+  visibility: hidden;
+}
+.anvil-highlight .left-nav-placeholder .prompt {
+  visibility: visible;
+}
+
+.left-nav > .column-panel {
+  padding: 24px 0;
+}
+.left-nav > .column-panel > .anvil-panel-section > .anvil-panel-section-container:not(.full-width-row) {
+  margin: 0 16px;
+  width: initial;
+  max-width: initial;
+  overflow-x: visible;
+}
+.left-nav > .column-panel > .anvil-panel-section:first-child > .anvil-panel-section-container.full-width-row {
+  margin-top: -24px;
+}
+.left-nav > .column-panel > .anvil-panel-section > .anvil-panel-section-container > .anvil-panel-section-gutter > .anvil-panel-row > .anvil-panel-col {
+  overflow-x: visible;
+}
+
+/* Make all the sidebar icons look nice */
+
+.left-nav .anvil-component-icon {
+  font-size: 160%;
+}
+
+.left-nav .anvil-component-icon.left-icon {
+  width: 0;
+  margin-right: 56px;
+  position: relative;
+  top: 0.15em;  
+}
+
+.left-nav .anvil-component-icon.left_edge-icon, .left-nav .anvil-component-icon.right_edge-icon {
+  left: 16px;
+  padding-top: 2px;
+  width: 0;
+}
+
+.left-nav .anvil-component-icon.right_edge-icon {
+  left: initial;
+  right: 16px;
+  top: 0;
+  padding-top: 2px;
+}
+
+/* Sidebar links (and labels with edge icons) go +16px wider
+   (Top-level columns in ColumnPanels get overflow-x visible [see above]to enable this)
+*/
+
+.left-nav a, .left-nav .anvil-label.left_edge-icon, .left-nav .anvil-label.right_edge-icon {
+  color: rgba(0,0,0,0.87);
+  margin: 0 -16px;
+  padding: 4px 16px;
+}
+
+.left-nav .anvil-component.left_edge-icon {
+  padding-left: 72px;
+}
+
+.left-nav a:hover, .left-nav .anvil-role-selected {
+  color: #1976D2;
+  background-color: rgba(0,0,0,.08);
+}
+
+.designer .nav-holder .left-nav {
+  min-width: 56px;
+}
+
+.designer .nav-holder .left-nav > .anvil-component {
+  min-width: 160px;
+}
+
+.nav-holder .left-nav > .anvil-component {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.nav-holder .content {
+  flex: 1;
+  overflow-x: hidden;
+}
+
+/* Components: App Bar */
+.app-bar {
+  min-height: 56px;
+  line-height: 40px;
+  padding: 0 16px 0 72px;
+
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  background-color: #2196F3;
+  
+  z-index: 1;
+  /* 4dp */ box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);  
+}
+
+.app-bar .anvil-component {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.app-bar > .sidebar-toggle { display:block; float:left;  margin-left: -61px; }
+.app-bar > .top-left-btn { float: left; margin-left: -60px; margin-right: -40px; }
+.app-bar > .title { float: left; }
+.app-bar > .title > .placeholder { outline: 1px dotted; padding-left: 16px; padding-right: 16px; margin: 8px 8px 0; display:none; }
+.app-bar > .app-bar-nav { float: right; font-weight: normal; }
+.app-bar > .app-bar-nav .placeholder { margin-top: 8px; padding: 0 8px; }
+.anvil-highlight .app-bar > .app-bar-nav .placeholder { outline: 1px dotted #ccc; }
+.anvil-highlight .app-bar > .title > .placeholder { display:block; }
+
+.app-bar a, .app-bar .anvil-component {
+  display: block;
+  color: white;
+  line-height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  margin: 5px 4px 0;
+}
+
+.app-bar .title .anvil-component {
+  margin-left: 0;
+}
+
+.app-bar input.anvil-component, .app-bar .anvil-component input {
+  line-height: 30px;
+  color: white;
+}
+
+.app-bar select.form-control {
+  height: 43px; /* 30px line height + 12px padding + 1px border */
+}
+
+.app-bar .anvil-component-icon-present .anvil-component-icon, .app-bar .sidebar-toggle .fa {
+  width: 30px;
+  text-align: center;
+}
+
+/* Don't put spacing on the top-level container (eg FlowPanel) */
+.app-bar-nav > .anvil-container {
+  margin: 0;
+  padding: 0;
+  min-height: 56px;
+}
+
+.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a) {
+  outline: 1px dotted #fff;
+  margin-top: 8px;
+  min-height: 40px;
+  padding: 5px 8px;
+}
+
+.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a)::after {  
+  content: "Drop Links here"
+}
+
+/* Rejig margin vs padding to give links the halo */
+.app-bar a, .app-bar a.anvil-component {
+  padding: 5px;
+  margin: 8px 0 0;
+  border-radius: 20px;
+}
+
+.app-bar a .link-text {
+  padding: 0 4px;
+}
+.app-bar a.has-text .anvil-component-icon.left {
+  margin-right: 4px;
+}
+.app-bar a.has-text .anvil-component-icon.right {
+  margin-left: 4px;
+}
+
+.app-bar a:hover, .app-bar a:active {
+  color: #eee; text-decoration: none;
+  background-color: #1976D2;
+}
+
+
+/* Component: Dialog (alert), Notification */
+.modal-content, body>div[data-notify="container"] {
+  border-radius: 2px;
+  /* 24dp */ box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2)
+    !important;
+}
+
+.modal-header {
+  padding: 24px 24px 0px;
+  font-size: 24px;
+  line-height: 32px;
+  border: 0;
+}
+
+.modal-body {
+  padding: 20px 24px 24px;
+  font-size: 16px;
+  color: #747474;
+}
+
+.modal-footer {
+  padding: 8px 8px 8px 24px;
+  border: 0;
+}
+
+.modal-footer .btn {
+  background-color: transparent;
+  color: #2196F3;
+}
+.modal-footer .btn, .modal-footer .btn:focus, .modal-footer .btn:active {
+  box-shadow: none;
+  top: 0;
+}
+
+/* Notifications */
+body>div[data-notify="container"] {
+  background: white;
+  border: none;
+  padding: 24px;
+}
+
+body>div[data-notify="container"]>span[data-notify="title"] {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333333;
+}
+
+body>div[data-notify="container"]>span[data-notify="message"] {
+  display: block;
+  padding: 20px 0 0;
+  font-size: 16px;
+  color: #747474;  
+}
+
+body>div[data-notify="container"].alert-success{
+  background-color: #d4edda;
+}
+
+body>div[data-notify="container"].alert-success>span[data-notify="title"]{
+  color: #155724;
+}
+
+body>div[data-notify="container"].alert-danger{
+  background-color: #f8d7da;
+}
+
+body>div[data-notify="container"].alert-danger>span[data-notify="title"]{
+  color: #721c24;
+}
+
+body>div[data-notify="container"].alert-warning{
+  background-color: #fff3cd;
+}
+
+body>div[data-notify="container"].alert-warning>span[data-notify="title"]{
+  color: #856404;
+}
+
+
+/* Component: Button */
+
+.btn, .btn-default, .file-loader>label {
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  min-height: calc(16px + 1.42857143em);
+  text-transform: uppercase;
+
+  border: 0;
+  background-image: none;
+  background-color: transparent;
+  color: #2196F3;
+  text-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  
+  position: relative;
+}
+
+.btn:hover, .btn:focus, .file-loader>label:hover {
+  background-color: rgba(153,153,153,0.2);
+  background-image: none;
+  outline: none;
+  color: #2196F3;
+}
+
+.btn:active, .btn:active:focus {
+  background-color: rgba(153,153,153,0.4);
+  background-image: none;
+  outline: none;
+  box-shadow: none;
+  color: #2196F3;
+}
+
+.btn[disabled] { color: rgba(0, 0, 0, .25); }
+.anvil-role-raised > .btn[disabled], .anvil-role-primary-color > .btn[disabled], .anvil-role-secondary-color > .btn[disabled] {
+  background-color: rgba(0,0,0,0.12) !important;
+  color: rgba(0,0,0,0.25) !important;
+  box-shadow: none !important;
+}
+
+.anvil-role-raised > .btn, .anvil-role-primary-color > .btn, .anvil-role-secondary-color > .btn, .anvil-role-raised.file-loader>label, .anvil-role-primary-color.file-loader>label, .anvil-role-secondary-color.file-loader>label,
+.btn-primary, .btn-success, .btn-info, .btn-warning, .btn-danger
+{
+  /* 2dp */  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.anvil-role-raised > .btn:active, .anvil-role-primary-color > .btn:active, .anvil-role-secondary-color > .btn:active, .btn-primary:active,
+.btn-primary:active, .btn-success:active, .btn-info:active, .btn-warning:active, .btn-danger:active {
+  /* 8dp */ box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);  
+  top: -1px;
+}
+
+.anvil-role-primary-color > .btn, .btn-primary, .anvil-role-primary-color.file-loader>label {
+  color: white;
+  background-color: #2196F3;
+}
+
+.anvil-role-secondary-color > .btn, .anvil-role-secondary-color.file-loader>label {
+  color: white;
+  background-color: #FF9800;
+}
+
+.btn-success, .btn-info, .btn-warning, .btn-danger {
+  color: white;
+}
+
+.anvil-role-primary-color > .btn:hover, .anvil-role-primary-color > .btn:active, .anvil-role-primary-color > .btn:focus,
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  color: white;
+  background-color: #1976D2;
+}
+
+.anvil-role-secondary-color > .btn:hover, .anvil-role-secondary-color > .btn:active, .anvil-role-secondary-color > .btn:focus {
+  color: white;
+  background-color: #F57C00;
+}
+
+/* Component: Card */
+
+.anvil-role-card {
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: white;
+  padding: 8px 12px;
+  /* 2dp */  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* full_width_row sections go full bleed */
+.column-panel.anvil-role-card > .anvil-panel-section > .anvil-panel-section-container.full-width-row {
+  margin-left: -12px;
+  margin-right: -12px;
+  width: initial;
+  max-width: initial;
+}
+
+/* If the first row of a card is a full_width_row, it goes to the top */
+.column-panel.anvil-role-card > .anvil-panel-section:first-child > .anvil-panel-section-container.full-width-row {
+  margin-top: -8px;
+}
+.column-panel.anvil-role-card > .anvil-panel-section:last-child > .anvil-panel-section-container.full-width-row {
+  margin-bottom: -8px;
+}
+
+
+
+/* Component: TextBox + TextArea */
+
+input.anvil-component, textarea.anvil-component, .anvil-component select, .anvil-datepicker input {
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 0;
+  background-color: transparent;
+  color: rgba(0,0,0,0.87);
+  
+  box-shadow: none;
+}
+
+.anvil-dropdown {
+  font-size: 16px;
+}
+.anvil-component select {
+  font-size: inherit;
+}
+
+input.anvil-component, .anvil-component select, .anvil-datepicker input {
+  padding: 8px 0 4px;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.42);
+
+  transition: border-bottom 0.2s, padding-bottom 0.2s;
+  -moz-transition: none; /* Firefox is jumpy, so disable transitions */
+}
+
+textarea.anvil-component {
+  padding: 4px 8px;
+  border: 1px solid rgba(0,0,0,0.42);
+  border-radius: 2px;
+  transition: border 0.2s, padding 0.2s;
+  -moz-transition: none; /* Firefox is jumpy, so disable transitions */
+}
+
+.anvil-dropdown select.form-control {
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 8px 2em 4px 0;
+  
+  /* ew ew ew - select elements are weird and don't obey line-height, so we just
+     set the height explicitly. Ugh. */
+  height: calc(1.5em + 13px); /* 8px + 4px padding + 1px border = 13px */
+}
+
+.anvil-dropdown {
+  position: relative;
+}
+/* Select arrow styling */
+.anvil-dropdown form:before {
+    content: "\25BC";
+    position: absolute;
+    right: 0;
+    font-size: 80%;
+    line-height: calc(1.8em + 8px);
+    color: #555;
+    pointer-events:none;
+    padding: 4px 4px;
+}
+
+.anvil-component select, .anvil-datepicker input { margin-bottom: 4px; }
+input.anvil-component.anvil-spacing-below-none { margin-bottom: 4px; }
+input.anvil-component.anvil-spacing-below-small { margin-bottom: 8px; }
+input.anvil-component.anvil-spacing-below-medium { margin-bottom: 12px; }
+input.anvil-component.anvil-spacing-below-large { margin-bottom: 20px; }
+
+input.anvil-component::-webkit-input-placeholder, textarea.anvil-component::-webkit-input-placeholder {
+  color: rgba(0,0,0,0.54);
+}
+input.anvil-component::-moz-placeholder, textarea.anvil-component::-moz-placeholder {
+  color: rgba(0,0,0,0.54);
+}
+input.anvil-component::placeholder, textarea.anvil-component::placeholder  {
+  color: rgba(0,0,0,0.54);
+}
+
+.app-bar input.anvil-component::-webkit-input-placeholder, .app-bar textarea.anvil-component::-webkit-input-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.app-bar input.anvil-component::-moz-placeholder, .app-bar textarea.anvil-component::-moz-placeholder {
+  color: rgba(255,255,255,0.8);
+}
+.app-bar input.anvil-component::placeholder, .app-bar textarea.anvil-component::placeholder  {
+  color: rgba(255,255,255,0.8);
+}
+
+input.anvil-component:hover, .anvil-component select:hover, .anvil-datepicker input:hover {
+  border-bottom: 2px solid rgba(0,0,0,.87);
+  padding-bottom: 3px;
+}
+
+input.anvil-component:focus, .anvil-component select:focus, .anvil-datepicker input:focus {
+  border-bottom: 2px solid #1976D2;
+  padding-bottom: 3px;
+  box-shadow: none;
+}
+
+input.anvil-component[disabled], .anvil-component select[disabled], .anvil-datepicker input[disabled] {
+  border-bottom: 1px dashed #888;
+  padding-bottom: 4px;
+  background-color: transparent;
+}
+
+textarea.anvil-component:hover {
+  border: 2px solid rgba(0,0,0,0.87);
+  padding: 3px 7px;
+}
+
+textarea.anvil-component:focus {
+  border: 2px solid #1976D2;
+  padding: 3px 7px;
+  box-shadow: none;
+}
+
+textarea.anvil-component[disabled] {
+  border: 1px dashed #888;
+  padding: 4px 8px;
+  background-color: transparent;
+}
+
+.daterangepicker td.active {
+  background-color: #2196F3;
+}
+
+.daterangepicker td.active:hover {
+  background-color: #1976D2;
+}
+
+.daterangepicker .btn-success {
+  color: #2196F3;
+}
+
+/* Component: CheckBox, RadioButton */
+/* Ugh. These are definitely TODO right now. */
+
+.checkbox, .radio {
+  font-size: 16px;
+}
+
+/* Shadow values taken from 
+https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-material-design-elevations
+*/
+
+</style>
+
+  <script src="https://anvil.works/runtime/node_modules/jquery/dist/jquery.min.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/node_modules/jquery-migrate/dist/jquery-migrate.min.js" crossorigin></script>
+
+  
+</head>
+<body class="anvil-show-banner">
+<div id="anvil-header">
+  <a href="https://anvil.works/?utm_source=app_banner" target="_blank" class="cta"><span class="hidden-xs">Build web apps for free with</span><span class="visible-xs-inline">Built with</span> Anvil</a>
+  <a href="https://anvil.works/?utm_source=app_banner" target="_blank"><span class="hidden-xs">Built with </span><img src="https://anvil.works/runtime/img/logo-35-white.png" crossorigin></a>
+</div>
+
+<a id="anvil-badge" href="https://anvil.works/?utm_source=app_banner" target="_blank">
+  <img src="https://anvil.works/runtime/img/made-with-anvil.png" crossorigin>
+</a>
+
+<div class="anvil-root-container">
+  <div id="appGoesHere"></div>
+</div>
+
+<div id="loadingSpinner"></div>
+
+<!-- Alert modal -->
+
+<div id="alert-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title alert-title">Title</h4>
+      </div>
+      <div class="modal-body">
+        Body
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Session expired modal -->
+
+<div id="session-expired-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Session Expired</h4>
+      </div>
+      <div class="modal-body">
+        Your session has timed out. Please refresh the page to continue.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger refresh">Refresh Now</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- Google API log-in modal -->
+
+<div id="google-login-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log in with Google</h4>
+      </div>
+      <div class="modal-body text-center">
+        <button id="googleLogInButton" type="button" class="btn" data-dismiss="modal"><img src="https://anvil.works/runtime/img/google-signin-buttons/btn_google_signin_light_normal_web.png" crossorigin/></button>
+      </div>
+      <div class="modal-footer">
+        <button id="googleCancelButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Facebook API log-in modal -->
+
+<div id="facebook-login-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log in with Facebook</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to log in to this app with Facebook</p>
+      </div>
+      <div class="modal-footer">
+        <button id="facebookCancelButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="facebookLogInButton" type="button" class="btn btn-success" data-dismiss="modal">Log in</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Microsoft log-in modal -->
+
+<div id="microsoft-login-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Log in with Microsoft</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to log in to this app with Microsoft</p>
+      </div>
+      <div class="modal-footer">
+        <button id="microsoftCancelButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="microsoftLogInButton" type="button" class="btn btn-success" data-dismiss="modal">Log in</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Raven log-in modal -->
+
+<div id="raven-login-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Log in with Raven</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to log in to this app with Raven</p>
+      </div>
+      <div class="modal-footer">
+        <button id="ravenCancelButton" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="ravenLogInButton" type="button" class="btn btn-success" data-dismiss="modal">Log in</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Stripe checkout modal -->
+
+<div id="stripe-checkout-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Pay Online</h4>
+      </div>
+      <div class="modal-body">
+        <p>You are about to make an online payment.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="stripeContinue" type="button" class="btn btn-success" data-dismiss="modal">Continue to payment screen</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Kerberos Login modal -->
+
+<div id="kerberos-login-modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Kerberos Authentication</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please enter your username and password</p>
+        <form class="">
+          <input id="kerberos-username" type="text" placeholder="Username" class="form-control" />
+          <input id="kerberos-password" type="password" placeholder="Password" class="form-control" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="kerberosCancel" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="kerberosLogin" type="button" class="btn btn-success" data-dismiss="modal">Log in</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+    <div id="error-indicator">
+        <div style="float:left; width: 40px">
+            <i class="glyphicon glyphicon-warning-sign" style="float:left; width: 40px;"></i>
+        </div>
+        <div style="float:right;">
+            <a class="glyphicon glyphicon-remove" href="#" onclick="$('#error-indicator').hide(); return false;"></a>
+        </div>
+        <div class="headline">This app has experienced an error</div>
+        <div class="message">Click for more information</div>
+        <pre class="output">H</pre>
+        <div style="clear:both"></div>
+    </div>
+
+  <script src="https://anvil.works/runtime/node_modules/html5-boilerplate/dist/js/vendor/modernizr-3.8.0.min.js?buildTime=1594366113" crossorigin></script>
+
+  <script src="https://anvil.works/runtime/node_modules/bootstrap/dist/js/bootstrap.min.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/node_modules/moment/min/moment.min.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/node_modules/moment-timezone/builds/moment-timezone-with-data-2012-2022.min.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/js/lib/daterangepicker.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/js/lib/b64.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/js/lib/bootstrap-notify.min.js?buildTime=1594366113" crossorigin></script>
+
+  <script src="https://anvil.works/runtime/node_modules/js-yaml/dist/js-yaml.min.js?buildTime=1594366113" crossorigin></script>
+  <script src="https://anvil.works/runtime/js/lib/mutationobserver.min.js?buildTime=1594366113" crossorigin></script>
+
+  <script src="https://anvil.works/runtime/node_modules/core-js/client/core.min.js?buildTime=1594366113" crossorigin></script>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function gm_authFailure(e) { window.googleMapsAuthFailure = true; };
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCn8yc8dmMNcmAn-e_K5HT7NX19csXUGUA&v=3&libraries=geometry"></script>
+
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+
+  <script src='https://anvil.works/runtime/js/lib/unorm.js?buildTime=1594366113' crossorigin></script>
+
+  <script src='https://anvil.works/runtime/js/lib/skulpt.min.js?buildTime=1594366113' crossorigin></script>
+  <script src='https://anvil.works/runtime/js/lib/skulpt-stdlib.js?buildTime=1594366113' crossorigin></script>
+
+  <script src="https://anvil.works/runtime/js/runner.bundle.js?buildTime=1594366113" crossorigin></script>
+
+  <script>
+      window.anvilCDNOrigin = "https://anvil.works";
+      window.anvilAppOrigin = "https://actigo.anvil.app";
+      window.anvilSessionId = "2vporplrkms4euq3e74rjn3w";
+      window.anvilVersion = "483df31f120b400657ccd871d47aa4496d413af6";
+      window.anvilAppInfo = {"id":"EHVTAIUDOLMYNKJM","branch":"master"};
+
+      // NB: We will need to preserve things other than ?s= at some point.
+      window.history.replaceState({}, "Anvil App", document.location.origin + document.location.pathname + document.location.hash);
+
+      // 
+$(function() {var anvilServicePreloadModules=[];Sk.builtinFiles.files["anvil-services\/tables\/__init__.py"] = "from anvil.tables import *\nfrom anvil.tables import _page_size\n";Sk.builtinFiles.files["anvil-services\/anvil\/tables\/__init__.py"] = "import anvil.server\nimport time, random\n\n# Hack: Force ourselves into the top-level package, even\n# if we were loaded into a runtime-v1 per-app Anvil package\n__package__ = \"anvil.tables\"\n__name__ = \"anvil.tables\"\n\nclass AppTables:\n\tcache = None\n\n\tdef __getattr__(self, name):\n\t\tif AppTables.cache is None:\n\t\t\tAppTables.cache = anvil.server.call(\"anvil.private.tables.get_app_tables\")\n\n\t\ttbl = AppTables.cache.get(name)\n\t\tif tbl is not None:\n\t\t\treturn tbl\n\n\t\traise AttributeError(\"No such app table: '%s'\" % name)\n\n\tdef __setattr__(self, name, val):\n\t\traise Exception(\"app_tables is read-only\")\n\n\napp_tables = AppTables()\n\n\n#!defClass(anvil.tables,TableError)!:\nclass TableError(anvil.server.AnvilWrappedError):\n\tpass\n\n\n#!defClass(anvil.tables,TransactionConflict,anvil.tables.TableError)!:\nclass TransactionConflict(TableError):\n\tpass\n\n\n#X NOT AUTOCOMPLETED defClass(anvil.tables,QuotaExceededError,anvil.tables.TableError)!:\nclass QuotaExceededError(TableError):\n\tpass\n\n\nanvil.server._register_exception_type(\"anvil.tables.TransactionConflict\", TransactionConflict)\nanvil.server._register_exception_type(\"anvil.tables.TableError\", TableError)\nanvil.server._register_exception_type(\"anvil.tables.QuotaExceededError\", QuotaExceededError)\n\n\nclass Transaction:\n\tdef __init__(self):\n\t\tself._aborting = False\n\n\t#!defMethod(anvil.tables.Transaction instance)!2: \"Begin the transaction\" [\"__enter__\"]\n\tdef __enter__(self):\n\t\tanvil.server.call(\"anvil.private.tables.open_transaction\")\n\t\treturn self\n\n\t#!defMethod(_)!2: \"End the transaction\" [\"__exit__\"]\n\tdef __exit__(self, e_type, e_val, tb):\n\t\tanvil.server.call(\"anvil.private.tables.close_transaction\", self._aborting or e_val is not None)\n\n\t#!defMethod(_)!2: \"Abort this transaction. When it ends, all write operations performed during it will be cancelled\" [\"abort\"]\n\tdef abort(self):\n\t\tself._aborting = True\n#!defClass(anvil.tables,Transaction)!:\n\n\ndef in_transaction(f):\n\tdef new_f(*args, **kwargs):\n\t\tn = 0\n\t\twhile True:\n\t\t\ttry:\n\t\t\t\twith Transaction():\n\t\t\t\t\treturn f(*args, **kwargs)\n\t\t\texcept TransactionConflict:\n\t\t\t\tn += 1\n\t\t\t\tif n == 8:\n\t\t\t\t\traise\n\t\t\t\t# Max total sleep time is a little under 12.8 seconds (avg 6.4)\n\t\t\t\tsleep_amt = random.random() * (2**n) * 0.05\n\t\t\t\ttry:\n\t\t\t\t\ttime.sleep(sleep_amt)\n\t\t\t\texcept:\n\t\t\t\t\tanvil.server.call(\"anvil.private._sleep\", sleep_amt)\n\n\ttry:\n\t\treregister = f._anvil_reregister\n\texcept AttributeError:\n\t\tpass\n\telse:\n\t\treregister(new_f)\n\n\tnew_f.__name__ = f.__name__\n\n\treturn new_f\n\n#!defFunction(anvil.tables,_,column_name,ascending=)!2: \"Sort the results of this table search by a particular column. Default to ascending order.\" [\"order_by\"]\n@anvil.server.serializable_type\nclass order_by(object):\n\tdef __init__(self, column_name, ascending=True):\n\t\tself.column_name = column_name\n\t\tself.ascending = ascending\n\n@anvil.server.serializable_type\nclass _page_size(object):\n\tdef __init__(self, rows):\n\t\tself.rows = rows\n";Sk.builtinFiles.files["anvil-services\/anvil\/tables\/query.py"] = "from anvil.server import serializable_type\n\n# Hack: Force ourselves into the top-level package, even\n# if we were loaded into a runtime-v1 per-app Anvil package\n__package__ = \"anvil.tables\"\n__name__ = \"anvil.tables.query\"\n\n#!defFunction(anvil.tables.query,_,pattern)!2: \"Match values using a case-sensitive LIKE query, using the % wildcard character.\" [\"like\"]\n@serializable_type\nclass like(object):\n    def __init__(self, pattern):\n        self.pattern = pattern\n\n#!defFunction(anvil.tables.query,_,pattern)!2: \"Match values using a case-insensitive ILIKE query, using the % wildcard character.\" [\"ilike\"]\n@serializable_type\nclass ilike(object):\n    def __init__(self, pattern):\n        self.pattern = pattern\n\n#!defFunction(anvil.tables.query,_,value)!2: \"Match values greater than the provided value.\" [\"greater_than\"]\n@serializable_type\nclass greater_than(object):\n    def __init__(self, value):\n        self.value = value\n\n#!defFunction(anvil.tables.query,_,value)!2: \"Match values less than the provided value.\" [\"less_than\"]\n@serializable_type\nclass less_than(object):\n    def __init__(self, value):\n        self.value = value\n\n#!defFunction(anvil.tables.query,_,value)!2: \"Match values greater than or equal to the provided value.\" [\"greater_than_or_equal_to\"]\n@serializable_type\nclass greater_than_or_equal_to(object):\n    def __init__(self, value):\n        self.value = value\n\n#!defFunction(anvil.tables.query,_,value)!2: \"Match values less than or equal to the provided value.\" [\"less_than_or_equal_to\"]\n@serializable_type\nclass less_than_or_equal_to(object):\n    def __init__(self, value):\n        self.value = value\n\n#!defFunction(anvil.tables.query,_,min,max,[min_inclusive=True],[max_inclusive=False])!2: \"Match values between the provided min and max, optionally inclusive.\" [\"between\"]\ndef between(min, max, min_inclusive=True, max_inclusive=False):\n    return all_of(\n        greater_than_or_equal_to(min) if min_inclusive else greater_than(min),\n        less_than_or_equal_to(max) if max_inclusive else less_than(max)\n    )\n\n#!defFunction(anvil.tables.query,_,query,[raw=False])!2: \"Match values that match the provided full-text search query.\" [\"full_text_match\"]\n@serializable_type\nclass full_text_match(object):\n    def __init__(self, query, raw=False):\n        self.query = query\n        self.raw = raw\n\n#!defFunction(anvil.tables.query,_,*query_expressions)!2: \"Match all query parameters given as arguments and keyword arguments\" [\"all_of\"]\n@serializable_type\nclass all_of(object):\n    def __init__(self, *args, **kwargs):\n        self.args = args\n        self.kwargs = kwargs\n\n#!defFunction(anvil.tables.query,_,*query_expressions)!2: \"Match any query parameters given as arguments and keyword arguments\" [\"any_of\"]\n@serializable_type\nclass any_of(object):\n    def __init__(self, *args, **kwargs):\n        self.args = args\n        self.kwargs = kwargs\n\n#!defFunction(anvil.tables.query,_,*query_expressions)!2: \"Match none of the query parameters given as arguments and keyword arguments\" [\"none_of\"]\n@serializable_type\nclass none_of(object):\n    def __init__(self, *args, **kwargs):\n        self.args = args\n        self.kwargs = kwargs\n\n#!defFunction(anvil.tables.query,_,*query_expressions)!2: \"Match none of the query parameters given as arguments and keyword arguments\" [\"not_\"]\nnot_ = none_of\n\n";anvilServicePreloadModules.push("anvil.users");Sk.builtinFiles.files["anvil-services\/anvil\/users\/__init__.py"] = "import anvil.server\nfrom anvil import *\nfrom .exceptions import UserExists, AuthenticationFailed, EmailNotConfirmed, AccountIsNotEnabled, PasswordNotAcceptable, MFARequired, PasswordResetRequested\nfrom .config import get_client_config\n\n#!suggestAttr(anvil.users,login_with_form)!0:\n\n#!defFunction(anvil.users,_)!2: \"Forget the current logged-in user\" [\"logout\"]\ndef logout():\n    anvil.server.call(\"anvil.private.users.logout\")\n\n\nanvil.server._register_exception_type(\"anvil.users.UserExists\", UserExists)\nanvil.server._register_exception_type(\"anvil.users.AuthenticationFailed\", AuthenticationFailed)\nanvil.server._register_exception_type(\"anvil.users.EmailNotConfirmed\", EmailNotConfirmed)\nanvil.server._register_exception_type(\"anvil.users.AccountIsNotEnabled\", AccountIsNotEnabled)\nanvil.server._register_exception_type(\"anvil.users.PasswordNotAcceptable\", PasswordNotAcceptable)\nanvil.server._register_exception_type(\"anvil.users.MFARequired\", MFARequired)\nanvil.server._register_exception_type(\"anvil.users.PasswordResetRequested\", PasswordResetRequested)\n\n#!defFunction(anvil.users,_,email,password,[remember=False])!2: \"Log in with the specified email address and password. Returns None if authentication failed.\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"login_with_email\"]\ndef login_with_email(email, password, remember=False, mfa=None):\n    return anvil.server.call(\"anvil.private.users.login_with_email\", email, password, remember=remember, mfa=mfa)\n\n#!defFunction(anvil.users,_,email,password,[remember=False])!2: \"Sign up for a new account with the specified email address and password. Raises anvil.users.UserExists if an account is already registered with this email address.\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"signup_with_email\"]\ndef signup_with_email(email, password, remember=False):\n    return anvil.server.call(\"anvil.private.users.signup_with_email\", email, password, remember=remember)\n\n#!defFunction(anvil.users,_,email_address)!2: \"Send a password-reset email to the specified user\" [\"send_password_reset_email\"]\ndef send_password_reset_email(email):\n    anvil.server.call(\"anvil.private.users.send_password_reset_email\", email)\n\n#!defFunction(anvil.users,_,email_address)!2: \"Send a login link email to the specified user\" [\"send_token_login_email\"]\ndef send_token_login_email(email):\n    anvil.server.call(\"anvil.private.users.send_token_login_email\", email)\n\n#!defFunction(anvil.users,_,old_password,new_password)!2: \"Reset the password for the current user\" [\"reset_password\"]\ndef reset_password(old_password, new_password):\n    anvil.server.call(\"anvil.private.users.reset_password\", old_password, new_password)\n\n\nif is_server_side():\n    def get_user(allow_remembered=True):\n        return anvil.server.call(\"anvil.private.users.get_current_user\", allow_remembered=allow_remembered)\n\n    #!defFunction(anvil.users,_,user_row,[remember=False])!2: \"Set the specified user object (a row from a Data Table) as the current logged-in user. It must be a row from the users table. By default, login status is not remembered between sessions.\" [\"force_login\"]\n    def force_login(user, remember=False):\n        return anvil.server.call(\"anvil.private.users.force_login\", user, remember=remember)\n\n    def _fail(fname):\n        def f(*args, **kwargs):\n            raise Exception(\"You can't use \" + fname + \"() on the server (do it in form code instead)\")\n        return f\n\n    for n in [\"login_with_google\", \"signup_with_google\", \"login_with_facebook\", \"signup_with_facebook\", \"login_with_microsoft\", \"signup_with_microsoft\", \"login_with_raven\", \"signup_with_raven\", \"login_with_form\", \"signup_with_form\"]:\n        globals()[n] = _fail(n)\n\nelse:\n    from . import mfa\n\n    #!defFunction(anvil.users,_,[allow_remembered=True])!2: \"Get the row from the users table that corresponds to the currently logged-in user. If allow_remembered is true (the default), the user may have logged in in a previous session. Returns None if no user is logged in.\" [\"get_user\"]\n    def get_user(allow_remembered=True):\n        try:\n            return anvil.server.call(\"anvil.private.users.get_current_user\", allow_remembered=allow_remembered)\n        except MFARequired:\n            # This should only happen if the user has arrived with a login token and needs to configure MFA\n            mfa.configure_mfa_with_form()\n            return None\n        except PasswordResetRequested:\n            change_password_with_form(False)\n            return anvil.server.call(\"anvil.private.users.get_current_user\", allow_remembered=allow_remembered)\n\n\n    def force_login(user, remember=False):\n        raise Exception(\"You can only use force_login() in server modules\")\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Log in with a Google account. Prompts the user to authenticate with Google, then logs in with their Google email address (if that user exists). Returns None if the login was cancelled or we have no record of this user.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.google.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"login_with_google\"]\n    def login_with_google(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_google\", False):\n            raise Exception(\"Google login is not enabled\")\n\n        import anvil.google.auth\n        if anvil.google.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.login_with_google\", remember=remember)\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Sign up for a new account with the email address associated with the user's Google account. Prompts the user to authenticate with Google, then registers a new user with that email address. Raises anvil.users.UserExists if this email address is already registered; returns new user or None if cancelled.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.google.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"signup_with_google\"]\n    def signup_with_google(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_google\", False):\n            raise Exception(\"Google signup is not enabled\")\n\n        if not get_client_config().get(\"allow_signup\"):\n            raise Exception(\"New user signup is not enabled\")\n\n        import anvil.google.auth\n        if anvil.google.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.signup_with_google\", remember=remember)\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Log in with a Facebook account. Prompts the user to authenticate with Facebook, then logs in with their Facebook email address (if that user exists). Returns None if the login was cancelled or we have no record of this user.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.facebook.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"login_with_facebook\"]\n    def login_with_facebook(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_facebook\"):\n            raise Exception(\"Facebook login is not enabled\")\n\n        import anvil.facebook.auth\n        if anvil.facebook.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.login_with_facebook\", remember=remember)\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Sign up for a new account with the email address associated with the user's Facebook account. Prompts the user to authenticate with Facebook, then registers a new user with that email address. Raises anvil.users.UserExists if this email address is already registered; returns new user or None if cancelled.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.facebook.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"signup_with_facebook\"]\n    def signup_with_facebook(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_facebook\"):\n            raise Exception(\"Facebook signup is not enabled\")\n\n        if not get_client_config().get(\"allow_signup\"):\n            raise Exception(\"New user signup is not enabled\")\n\n        import anvil.facebook.auth\n        if anvil.facbeook.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.signup_with_facebook\", remember=remember)\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Log in with a Microsoft account. Prompts the user to authenticate with Microsoft, then logs in with their Microsoft email address (if that user exists). Returns None if the login was cancelled or we have no record of this user.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.microsoft.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"login_with_microsoft\"]\n    def login_with_microsoft(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_microsoft\"):\n            raise Exception(\"Microsoft login is not enabled\")\n\n        import anvil.microsoft.auth\n        if anvil.microsoft.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.login_with_microsoft\", remember=remember)\n\n    #!defFunction(anvil.users,!,[additional_scopes],[remember=False])!2: \"Sign up for a new account with the email address associated with the user's Microsoft account. Prompts the user to authenticate with Microsoft, then registers a new user with that email address. Raises anvil.users.UserExists if this email address is already registered; returns new user or None if cancelled.\\n\\nadditional_scopes: If supplied, these are passed on to anvil.microsoft.auth.login().\\n\\nBy default, login status is not remembered between sessions; set remember=True to remember login status.\" [\"signup_with_microsoft\"]\n    def signup_with_microsoft(additional_scopes=None, remember=False):\n        if not get_client_config().get(\"use_microsoft\"):\n            raise Exception(\"Microsoft signup is not enabled\")\n\n        if not get_client_config().get(\"allow_signup\"):\n            raise Exception(\"New user signup is not enabled\")\n\n        import anvil.microsoft.auth\n        if anvil.microsoft.auth.login(additional_scopes):\n            return anvil.server.call(\"anvil.private.users.signup_with_microsoft\", remember=remember)\n\n    # Disable documentation for raven functions for now.\n    #defFunction(anvil.users,!,[remember=False])!2: \"Log in with a Raven account. Prompts the user to authenticate with Raven, then logs in with their Raven account (if that user exists). Returns None if the login was cancelled or we have no record of this user. By default, login status is not remembered between sessions.\" [\"login_with_raven\"]\n    def login_with_raven(remember=False):\n        if not get_client_config().get(\"use_raven\", False):\n            raise Exception(\"Raven login is not enabled\")\n\n        import raven.auth\n        if raven.auth.login():\n            return anvil.server.call(\"anvil.private.users.login_with_raven\", remember=remember)\n\n    #defFunction(anvil.users,!,[remember=False])!2: \"Sign up for a new account with the email address associated with the user's Raven account. Prompts the user to authenticate with Raven, then registers a new user with that email address. Raises anvil.users.UserExists if this email address is already registered; returns new user or None if cancelled. By default, login status is not remembered between sessions.\" [\"signup_with_raven\"]\n    def signup_with_raven(remember=False):\n        if not get_client_config().get(\"use_raven\", False):\n            raise Exception(\"Raven signup is not enabled\")\n\n        if not get_client_config().get(\"allow_signup\"):\n            raise Exception(\"New user signup is not enabled\")\n\n        import raven.auth\n        if raven.auth.login():\n            return anvil.server.call(\"anvil.private.users.signup_with_raven\", remember=remember)\n\n\n    _label_style = {}\n\n    def _email_token_login_with_form(initial_email=\"\"):\n        panel = LinearPanel()\n\n        email_box = TextBox(placeholder=\"Email address\", text=initial_email)\n        panel.add_component(Label(text=\"To receive a login link by email, enter your registered email address\"))\n        panel.add_component(email_box)\n\n        def show(**e):\n            email_box.focus()\n            email_box.select()\n\n        email_box.set_event_handler(\"show\", show)\n        email_box.set_event_handler(\"pressed_enter\", lambda **e: panel.raise_event(\"x-close-alert\", value=True))\n\n        if alert(panel, title=\"Login by email\", buttons=[(\"Send email\", True, 'success'),(\"Cancel\", False, \"default\")], dismissible=True):\n            return email_box.text\n\n\n\n\n    #!defFunction(anvil.users,!,[remember_by_default=True],[allow_cancel=False])!2: \"Display a sign-up form allowing a user to create a new account. Returns the new user object, or None if cancelled.\\n\\nremember_by_default: if True, the 'remember me' checkbox will be enabled by default.\\n\\nallow_cancel: if True, the signup form has a Cancel button that the user can use to dismiss the form.\" [\"signup_with_form\"]\n    def signup_with_form(_link_back_to_login_on_already_exists=False,remember_by_default=True, allow_cancel=False, initial_email=\"\", initial_password=\"\"):\n        if not get_client_config().get(\"allow_signup\"):\n            raise Exception(\"New user signup is not enabled\")\n\n        lp = LinearPanel()\n        email_box = None\n        passwd_box = None\n        remember_me_checkbox = None\n\n        def email_pressed_enter(**kws):\n            if passwd_box and len(passwd_box) > 0:\n                passwd_box[0].focus()\n\n        def passwd_1_pressed_enter(**kws):\n            if passwd_box and len(passwd_box) > 1:\n                passwd_box[1].focus()\n\n        def passwd_2_pressed_enter(**kws):\n            lp.raise_event('x-close-alert', value='sign-up')\n\n        some_method_available = False\n\n        if get_client_config().get(\"use_email\", False):\n            some_method_available = True\n            lp.add_component(Label(text=\"Email:\", **_label_style))\n            email_box = TextBox(placeholder=\"address@example.com\", text=initial_email)\n            email_box.set_event_handler(\"pressed_enter\", email_pressed_enter)\n            lp.add_component(email_box)\n\n        if get_client_config().get(\"use_email\", False):\n            some_method_available = True\n            passwd_box = [TextBox(hide_text=True, placeholder=p) for p in [\"password\", \"repeat password\"]]\n            lp.add_component(Label(text=\"Password:\", **_label_style))\n            passwd_box[0].set_event_handler(\"pressed_enter\", passwd_1_pressed_enter)\n            passwd_box[0].text = initial_password\n            lp.add_component(passwd_box[0])\n            lp.add_component(Label(text=\"Retype password:\", **_label_style))\n            passwd_box[1].set_event_handler(\"pressed_enter\", passwd_2_pressed_enter)\n            lp.add_component(passwd_box[1])\n\n        if get_client_config().get(\"use_google\", False):\n            some_method_available = True\n            def google_login(**evt):\n                import anvil.google.auth\n                if anvil.google.auth.login():\n                    lp.raise_event('x-close-alert', value='google')\n            lnk = Link(spacing_above=\"large\", spacing_below=\"none\")\n            lnk.add_component(Image(source=anvil._get_anvil_cdn_origin() + \"\/runtime\/img\/google-signin-buttons\/btn_google_signin_light_normal_web.png\", display_mode=\"original_size\"))\n            lnk.set_event_handler(\"click\", google_login)\n            lp.add_component(lnk)\n\n        if get_client_config().get(\"use_facebook\"):\n            some_method_available = True\n            def facebook_login(**evt):\n                import anvil.facebook.auth\n                if anvil.facebook.auth.login():\n                    lp.raise_event('x-close-alert', value='facebook')\n            b = Button(text=\"Sign up with Facebook\", icon=\"fa:facebook\", icon_align=\"left\")\n            lp.add_component(b)\n            b.set_event_handler(\"click\", facebook_login)\n\n        if get_client_config().get(\"use_microsoft\"):\n            some_method_available = True\n            def microsoft_login(**evt):\n                import anvil.microsoft.auth\n                if anvil.microsoft.auth.login():\n                    lp.raise_event('x-close-alert', value='microsoft')\n            b = Button(text=\"Sign up with Microsoft\", icon=\"fa:windows\", icon_align=\"left\")\n            lp.add_component(b)\n            b.set_event_handler(\"click\", microsoft_login)\n\n        if get_client_config().get(\"use_raven\", False):\n            some_method_available = True\n            import raven.auth\n            def raven_login(**evt):\n                if raven.auth.login():\n                    lp.raise_event('x-close-alert', value='raven')\n            b = Button(text=\"Sign up with Raven\", icon=\"fa:lock\", icon_align=\"left\")\n            lp.add_component(b)\n            b.set_event_handler(\"click\", raven_login)\n\n        if not some_method_available:\n            raise Exception(\"This app has no supported sign-in methods. Please check settings in the Users Service configuration.\")\n\n        error_lbl = Label(foreground=\"red\", bold=True, spacing_below=\"none\")\n        lp.add_component(error_lbl)\n\n        log_in_instead_link = Link(text=\"Log in instead\", visible=False,\n                                   icon=\"fa:chevron-right\", icon_align=\"right\", spacing_above=\"none\")\n        def log_in_instead(**evt):\n            lp.raise_event('x-close-alert', value=None)\n        log_in_instead_link.set_event_handler(\"click\", log_in_instead)\n        if _link_back_to_login_on_already_exists:\n            lp.add_component(log_in_instead_link)\n\n\n        if get_client_config().get(\"allow_remember_me\", False) and not get_client_config().get(\"confirm_email\", False):\n            remember_me_checkbox = CheckBox(text=\"Remember me\", checked=remember_by_default)\n            lp.add_component(remember_me_checkbox)\n\n        if email_box and passwd_box:\n            lp.set_event_handler(\"show\", lambda **e: (email_box.focus() if not initial_email else (passwd_box[0].focus() if not passwd_box[0].text else passwd_box[1].focus())))\n\n        attempts = 0\n        while True:\n            if passwd_box and attempts > 0:\n                for pb in passwd_box:\n                    pb.text = \"\"\n\n            attempts += 1\n\n            maybe_cancel_button = [(\"Cancel\", None)] if allow_cancel else []\n\n            if get_client_config().get(\"use_email\", False):\n                ar = alert(lp, title=\"Sign Up\", buttons=[(\"Sign Up\", 'sign-up', \"primary\")] + maybe_cancel_button, dismissible=allow_cancel)\n            else:\n                ar = alert(lp, title=\"Sign Up\", buttons=maybe_cancel_button, dismissible=allow_cancel)\n\n            if not ar:\n                return None\n\n            # TODO require certain fields and include them in the sign-up call\n \n            remember = (remember_me_checkbox and remember_me_checkbox.checked)\n\n            try:\n                if ar == 'google':\n                    user = anvil.server.call(\"anvil.private.users.signup_with_google\", remember=remember)\n                elif ar == 'facebook':\n                    user = anvil.server.call(\"anvil.private.users.signup_with_facebook\", remember=remember)\n                elif ar == 'microsoft':\n                    user = anvil.server.call(\"anvil.private.users.signup_with_microsoft\", remember=remember)\n                elif ar == 'raven':\n                    user = anvil.server.call(\"anvil.private.users.signup_with_raven\", remember=remember)\n                elif ar == 'sign-up' and passwd_box:\n                    if len(email_box.text) < 5 or \"@\" not in email_box.text or \".\" not in email_box.text:\n                        error_lbl.text = \"Enter an email address\"\n                        continue\n                    if passwd_box[1].text != passwd_box[0].text:\n                        error_lbl.text = \"Passwords do not match\"\n                        continue\n\n                    try:\n                        user = anvil.server.call(\"anvil.private.users.signup_with_email\", email_box.text, passwd_box[0].text, remember=remember)\n                    except MFARequired:\n                        mfa_method, _ = mfa._configure_mfa(email_box.text, None, False, [(\"Cancel\", None)], \"Sign up\")\n                        if mfa_method:\n                            user = anvil.server.call(\"anvil.private.users.signup_with_email\", email_box.text, passwd_box[0].text, mfa_method=mfa_method, remember=remember)\n                        else:\n                            continue\n\n                    if get_client_config().get(\"confirm_email\", False):\n                        alert(\"We've sent a confirmation email to \" + email_box.text + \". Open your inbox and click the link to complete your signup.\", title=\"Confirm your Email\", buttons=[(\"OK\", None, \"primary\")])\n                    \n                    return user\n\n                else:\n                    raise Exception(\"Invalid configuration for Users service\")\n\n            except UserExists as e:\n                error_lbl.text = str(e.args[0])\n                log_in_instead_link.visible = True\n                continue\n\n            except PasswordNotAcceptable as e:\n                error_lbl.text = str(e.args[0])\n                log_in_instead_link.visible = False\n                continue\n\n            return user\n\n    #!defFunction(anvil.users,!,[show_signup_option=True],[remember_by_default=True],[allow_remembered=True],[allow_cancel=False])!2: \"Display a login form and allow user to log in. Returns user object if logged in, or None if cancelled.\\n\\nshow_signup_option: if True, the form will also show the option to sign up for a new account.\\n\\nremember_by_default: if True, the 'remember me' checkbox will be enabled by default.\\n\\nallow_remembered: if False, users with remembered login status will still be required to log in.\\n\\nallow_cancel: if True, the login form has a Cancel button that the user can use to dismiss the form.\" [\"login_with_form\"]\n    def login_with_form(show_signup_option=True,remember_by_default=True, allow_remembered=True, allow_cancel=False):\n        \n        if allow_remembered:\n           u = get_user()\n           if u:\n               return u\n\n        lp = LinearPanel()\n        email_box = None\n        passwd_box = None\n        remember_me_checkbox = None\n\n        def focus_email(**kws):\n            if email_box:\n                email_box.focus()\n\n        def focus_password(**kws):\n            if passwd_box:\n                passwd_box.focus()\n\n        def close_alert(**kws):\n            lp.raise_event('x-close-alert', value='login')\n\n        some_method_available = False\n        if get_client_config().get(\"use_email\", False):\n            some_method_available = True\n\n            last_email = anvil.server.call(\"anvil.private.users.get_last_login_email\")\n\n            email_box = TextBox(placeholder=\"email@address.com\", text=last_email)\n            passwd_box = TextBox(placeholder=\"password\", hide_text=True, spacing_below=\"none\")\n\n            email_box.set_event_handler(\"pressed_enter\", focus_password)\n            passwd_box.set_event_handler(\"pressed_enter\", close_alert)\n\n            if last_email is None:\n                lp.set_event_handler(\"show\", focus_email)\n            else:\n                lp.set_event_handler(\"show\", focus_password)\n\n            lp.add_component(Label(text=\"Email:\", **_label_style))\n            lp.add_component(email_box)\n            lp.add_component(Label(text=\"Password:\", **_label_style))\n            lp.add_component(passwd_box)\n            reset_link = Link(text=\"Forgot your password?\", font_size=12, spacing_above=\"none\", align=\"right\")\n            reset_link.set_event_handler('click', lambda **e: lp.raise_event('x-close-alert', value='reset_password'))\n            lp.add_component(reset_link)\n\n        if get_client_config().get(\"use_google\", False):\n            some_method_available = True\n            def google_login(**evt):\n                import anvil.google.auth\n                if anvil.google.auth.login():\n                    lp.raise_event('x-close-alert', value='google')\n                \n            lnk = Link(spacing_above=\"large\", spacing_below=\"none\")\n            lnk.add_component(Image(source=anvil._get_anvil_cdn_origin() + \"\/runtime\/img\/google-signin-buttons\/btn_google_signin_light_normal_web.png\", display_mode=\"original_size\"))\n            lnk.set_event_handler(\"click\", google_login)\n            lp.add_component(lnk)\n\n        if get_client_config().get(\"use_facebook\"):\n            some_method_available = True\n            def facebook_login(**evt):\n                import anvil.facebook.auth\n                if anvil.facebook.auth.login():\n                    lp.raise_event('x-close-alert', value='facebook')\n                \n            b = Button(text=\"Log in with Facebook\", icon=\"fa:facebook\", icon_align=\"left\")\n            b.set_event_handler('click', facebook_login)\n            lp.add_component(b)\n\n        if get_client_config().get(\"use_microsoft\"):\n            some_method_available = True\n            def microsoft_login(**evt):\n                import anvil.microsoft.auth\n                if anvil.microsoft.auth.login():\n                    lp.raise_event('x-close-alert', value='microsoft')\n                \n            b = Button(text=\"Log in with Microsoft\", icon=\"fa:windows\", icon_align=\"left\")\n            b.set_event_handler('click', microsoft_login)\n            lp.add_component(b)\n\n        if get_client_config().get(\"use_raven\", False):\n            some_method_available = True\n            def raven_login(**evt):\n                import raven.auth\n                if raven.auth.login():\n                    lp.raise_event('x-close-alert', value='raven')\n                \n            b = Button(text=\"Log in with Raven\", icon=\"fa:lock\", icon_align=\"left\")\n            b.set_event_handler('click', raven_login)\n            lp.add_component(b)\n\n        if get_client_config().get(\"use_token\", False):\n            some_method_available = True\n            b = Link(text=\"Log in via email\", icon=\"fa:envelope\", icon_align=\"left\", align=\"center\")\n            b.set_event_handler('click', lambda **e: lp.raise_event('x-close-alert', value='email_token'))\n            lp.add_component(b)\n\n        if not some_method_available:\n            raise Exception(\"This app has no supported sign-in methods. Please check settings in the Users Service configuration.\")\n\n        error_lbl = Label(foreground=\"red\", bold=True)\n        lp.add_component(error_lbl)\n\n        if get_client_config().get(\"allow_signup\") and show_signup_option:\n            def open_signup(**evt):\n                lp.raise_event('x-close-alert', value='sign-up')\n            signup_link = Link(text=\"Sign up for a new account\", icon=\"fa:user-plus\")\n            signup_link.set_event_handler('click', open_signup)\n            lp.add_component(signup_link)\n\n        if get_client_config().get(\"allow_remember_me\", False):\n            remember_me_checkbox = CheckBox(text=\"Remember me\", checked=remember_by_default)\n            lp.add_component(remember_me_checkbox)\n\n        while True:\n            if passwd_box:\n                passwd_box.text = \"\"\n\n            maybe_cancel_button = [(\"Cancel\", None)] if allow_cancel else []\n\n            if get_client_config().get(\"use_email\", False):\n                ar = alert(lp, title=\"Log In\", buttons=[(\"Log In\", 'login', 'success')] + maybe_cancel_button, dismissible=allow_cancel)\n            else:\n                ar = alert(lp, title=\"Log In\", buttons=maybe_cancel_button, dismissible=allow_cancel)\n\n            remember = (remember_me_checkbox and remember_me_checkbox.checked)\n            try:\n                if ar == 'google':\n                    user = anvil.server.call(\"anvil.private.users.login_with_google\", remember=remember)\n                    if user or allow_cancel:\n                        return user\n                elif ar == 'facebook':\n                    user = anvil.server.call(\"anvil.private.users.login_with_facebook\", remember=remember)\n                    if user or allow_cancel:\n                        return user\n                elif ar == 'microsoft':\n                    user = anvil.server.call(\"anvil.private.users.login_with_microsoft\", remember=remember)\n                    if user or allow_cancel:\n                        return user\n                elif ar == 'raven':\n                    user = anvil.server.call(\"anvil.private.users.login_with_raven\", remember=remember)\n                    if user or allow_cancel:\n                        return user\n                elif ar == 'email_token':\n                    if _email_token_login_with_form(email_box.text if email_box else \"\"):\n                        send_token_login_email(email_box.text)\n                        alert(\"An email with a login link has been sent to you. You can now close this window.\", buttons=[], dismissible=False)\n                elif ar == 'reset_password':\n                    reset_email_box = TextBox(placeholder=\"email@address.com\", text=email_box.text)\n                    pnl = LinearPanel()\n                    pnl.add_component(reset_email_box)\n                    if alert(pnl, title=\"Reset password by email\", buttons=[(\"OK\", True, \"primary\"), (\"Cancel\", False, \"default\")]):\n                        send_password_reset_email(reset_email_box.text)\n                        error_lbl.text = \"Requested password reset for \" + reset_email_box.text + \". Check your email.\"\n                    else:\n                        error_lbl.text = \"\"\n                    # Continue around loop\n                elif ar == 'login':\n\n                    try:\n                        return login_with_email(email_box.text, passwd_box.text, remember=remember)\n                    except MFARequired:\n                        \n                        r = mfa.mfa_login_with_form(email_box.text, passwd_box.text)\n                        \n                        if r == 'reset_mfa':\n                            mfa.send_mfa_reset_email(email_box.text)\n                            error_lbl.text = \"Requested 2-factor authentication reset for \" + email_box.text + \". Check your email.\"\n                        elif r == None:\n                            if allow_cancel:\n                                return None\n                            # Else continue around the loop\n                        else:\n                            # We got an MFA dict. Log in with it.\n                            return login_with_email(email_box.text, passwd_box.text, mfa=r, remember=remember)\n\n                elif ar == 'sign-up':\n                    if signup_with_form(_link_back_to_login_on_already_exists=True, allow_cancel=True, initial_email=email_box.text if email_box else \"\", initial_password=passwd_box.text if passwd_box else \"\"):\n                        user = get_user(allow_remembered=False)\n                        if user:\n                            return user\n                    # else continue around the loop\n                else:\n                    return None\n            except AuthenticationFailed as e:\n                error_lbl.text = e.args[0]\n\n    #!defFunction(anvil.users,_,[require_old_password=True])!2: \"Display a form allowing the current user to reset their password. \" [\"change_password_with_form\"]\n    def change_password_with_form(require_old_password=True):\n\n        err = None\n        while True:\n            panel = LinearPanel()\n\n            old_pwd = TextBox(hide_text=True, placeholder=\"Old password\")\n            new_pwd = [TextBox(hide_text=True, placeholder=\"New password\"), TextBox(hide_text=True, placeholder=\"Confirm new password\")]\n\n            if require_old_password:\n                panel.add_component(old_pwd)\n                old_pwd.set_event_handler(\"show\", lambda **e: old_pwd.focus())\n                old_pwd.set_event_handler(\"pressed_enter\", lambda **e: new_pwd[0].focus())\n            else:\n                new_pwd[0].set_event_handler(\"show\", lambda **e: new_pwd[0].focus())\n\n            new_pwd[0].set_event_handler(\"pressed_enter\", lambda **e: new_pwd[1].focus())\n            new_pwd[1].set_event_handler(\"pressed_enter\", lambda **e: panel.raise_event(\"x-close-alert\", value=True))\n\n            panel.add_component(new_pwd[0])\n            panel.add_component(new_pwd[1])\n\n            if err:\n                panel.add_component(Label(text=err, foreground=\"red\"))\n\n            r = alert(panel, title=\"Change password\" if require_old_password else \"Reset password\", buttons=[(\"Change\" if require_old_password else \"Reset\", True, \"success\"), (\"Cancel\", False, \"default\")], dismissible=True)\n\n            if r:\n                if new_pwd[0].text == new_pwd[1].text:\n                    try:\n                        # Reset password for the currently logged-in user\n                        reset_password(old_pwd.text, new_pwd[0].text)\n                        return\n                    except AuthenticationFailed as e:\n                        err = str(e.args[0])\n                    except PasswordNotAcceptable as e:\n                        err = str(e.args[0])\n                else:\n                    err = \"Passwords do not match\"\n            else:\n                anvil.server.call(\"anvil.private.users.cancel_password_reset\")\n                return\n\n\n    #!defFunction(anvil.users,_)!2: \"Display a form allowing the current user to configure their account. The form contains links for password reset and two-factor authentication configuration.\" [\"configure_account_with_form\"]\n    def configure_account_with_form():\n\n        if not get_user():\n            raise Exception(\"Cannot configure user account: Not logged in.\")\n\n        while True:\n            panel = LinearPanel()\n\n            reset_password_link = Link(text=\"Change password\")\n            configure_mfa_link = Link(text=\"Configure two-factor authentication\")\n\n            reset_password_link.set_event_handler(\"click\", lambda **e: panel.raise_event(\"x-close-alert\", value=\"reset_password\"))\n            configure_mfa_link.set_event_handler(\"click\", lambda **e: panel.raise_event(\"x-close-alert\", value=\"configure_mfa\"))\n\n            panel.add_component(reset_password_link)\n            panel.add_component(configure_mfa_link)\n\n            choice = alert(panel, title=\"Configure Account\", buttons=[(\"Done\", None, \"success\")], dismissible=True)\n\n            if choice == \"reset_password\":\n                change_password_with_form()\n            elif choice == \"configure_mfa\":\n                mfa.configure_mfa_with_form(True)\n            else:\n                break\n";Sk.builtinFiles.files["anvil-services\/anvil\/users\/exceptions.py"] = "import anvil.server\n\n#!defClass(anvil.users,UserExists)!:\nclass UserExists(anvil.server.AnvilWrappedError):\n    pass\n\n\n#!defClass(anvil.users,AuthenticationFailed)!:\nclass AuthenticationFailed(anvil.server.AnvilWrappedError):\n    pass\n\n\n#!defClass(anvil.users,EmailNotConfirmed)!:\nclass EmailNotConfirmed(AuthenticationFailed):\n    pass\n\n\n#!defClass(anvil.users,AccountIsNotEnabled)!:\nclass AccountIsNotEnabled(AuthenticationFailed):\n    pass\n\n\n#!defClass(anvil.users,PasswordNotAcceptable)!:\nclass PasswordNotAcceptable(anvil.server.AnvilWrappedError):\n    pass\n\n#!defClass(anvil.users,MFARequired)!:\nclass MFARequired(AuthenticationFailed):\n    pass\n\n#!defClass(anvil.users,PasswordResetRequested)!:\nclass PasswordResetRequested(anvil.server.AnvilWrappedError):\n    pass\n";Sk.builtinFiles.files["anvil-services\/anvil\/users\/mfa\/__init__.py"] = "import anvil.server\nfrom anvil import *\nfrom ..exceptions import AuthenticationFailed\nfrom ..config import get_client_config\n\n#!defFunction(anvil.users,_,email_address)!2: \"Send a two-factor authentication reset email to the specified user.\" [\"send_mfa_reset_email\"]\ndef send_mfa_reset_email(email):\n    anvil.server.call(\"anvil.private.users.send_mfa_reset_email\", email)\nif is_server_side():\n    pass\nelse:\n    from . import webauthn\n\n    #!defFunction(anvil.users.mfa,_,email_address)!2: \"Generate a WebAuthn challenge that can be used to register a new hardware token for two-factor authentication.\" [\"create_fido_mfa_method\"]\n    def create_fido_mfa_method(email):\n        opts = anvil.server.call(\"anvil.private.users.begin_fido_attestation\", email)\n        result = webauthn.create(opts)\n        if result:\n            return anvil.server.call(\"anvil.private.users.validate_fido_attestation\", result)\n\n    #!defFunction(anvil.users.mfa,_,email_address,password)!2: \"Generate a WebAuthn challenge that the given user can use to log in with a previously registered hardware token.\" [\"get_fido_mfa_login\"]\n    def get_fido_mfa_login(email, password):\n        opts = anvil.server.call(\"anvil.private.users.begin_fido_assertion\", email, password)\n        result = webauthn.get(opts)\n        if result:\n            return {\"type\": 'fido', \"result\": result}\n\n    #!defFunction(anvil.users.mfa,_,code)!2: \"Get an MFA login object representing a TOTP login code. This can be passed to the login_with_email function as the mfa argument.\" [\"get_totp_mfa_login\"]\n    def get_totp_mfa_login(code):\n        return {\"type\": \"totp\", \"code\": code}\n\n    #!defFunction(anvil.users.mfa,_,email_address)!2: \"Generate a TOTP secret that can be added as two-factor authentication for the current user.\" [\"generate_totp_secret\"]\n    def generate_totp_secret(email):\n        return anvil.server.call(\"anvil.private.users.totp.generate_secret\", email)\n\n    #!defFunction(anvil.users.mfa,_,mfa_method,code)!2: \"Validate the given TOTP code against the given MFA method from a User row.\" [\"validate_totp_code\"]\n    def validate_totp_code(mfa_method, code):\n        return anvil.server.call(\"anvil.private.users.totp.validate_code\", mfa_method, code)\n\n    #!defFunction(anvil.users.mfa,_,password,mfa_method,[clear_existing=False])!2: \"Add an MFA method to the current user by passing the user's password and the mfa method, optionally clearing all existing methods.\" [\"add_mfa_method\"]\n    def add_mfa_method(password, method, clear_existing=False):\n        return anvil.server.call(\"anvil.private.users.add_mfa_method\", password, method, clear_existing)\n\n    #!defFunction(anvil.users.mfa,_,email_address,password)!2: \"Get the available MFA types for the given user by passing their email and password.\" [\"get_available_mfa_types\"]\n    def get_available_mfa_types(email, password):\n        return anvil.server.call(\"anvil.private.users.get_available_mfa_types\", email, password)\n\n    def _configure_mfa(email, mfa_error, require_password, allow_cancel, confirm_button_text):\n        totp_config = generate_totp_secret(email)\n        totp_secret = totp_config['secret']\n        qr_code = totp_config['qr_code']\n        mfa_methods = {\n            'totp': totp_config['mfa_method'],\n        }\n\n        while True:\n\n            mfa_panel = LinearPanel()\n            mfa_panel.add_component(Label(text=\"This app requires 2-factor authentication to log in.\"))\n\n            def signup_with_fido(**e):\n                result = create_fido_mfa_method(email)\n                if result:\n                    mfa_methods['fido'] = result\n                    mfa_panel.raise_event(\"x-close-alert\", value='fido')\n\n            if webauthn.is_webauthn_available():\n                fido_link = Link(text=\"Use hardware token\",icon=\"fa:lock\")\n                fido_link.set_event_handler(\"click\", signup_with_fido)\n                mfa_panel.add_component(fido_link)\n            else:\n                mfa_panel.add_component(Label(text=\"Hardware token unavailable\", icon=\"fa:lock\", tooltip=\"Is this page running in an iframe or an unsupported browser?\"))\n\n            mfa_panel.add_component(Label(text=\"Alternatively, scan this QR-code with your Authenticator app and then enter the current code below to continue.\"))\n            mfa_panel.add_component(Image(source=qr_code, display_mode=\"fill_width\"))\n\n            totp_box = TextBox(placeholder=\"Enter 6-digit code\", align=\"center\", font=\"monospace\")\n            totp_box.set_event_handler(\"pressed_enter\", lambda **e: mfa_panel.raise_event(\"x-close-alert\", value='totp'))\n\n            password_box = TextBox(placeholder=\"Current password\", align=\"center\", hide_text=True)\n            password_box.set_event_handler(\"show\", lambda **e: password_box.focus())\n            password_box.set_event_handler(\"pressed_enter\", lambda **e: totp_box.focus())\n\n            if require_password:\n                mfa_panel.add_component(password_box)\n                password_box.set_event_handler(\"show\", lambda **e: password_box.focus())\n            else:\n                totp_box.set_event_handler(\"show\", lambda **e: totp_box.focus())\n\n            mfa_panel.add_component(totp_box)\n\n\n\n            if mfa_error:\n                mfa_panel.add_component(Label(foreground=\"red\", bold=True, spacing_below=\"none\", text=mfa_error))\n\n            maybe_cancel_button = [(\"Cancel\", None)] if allow_cancel else []\n            mfa = alert(mfa_panel, title=\"2-Factor Authentication\", buttons=[(confirm_button_text, 'totp', 'success')] + maybe_cancel_button, dismissible=bool(allow_cancel))\n            if mfa == 'totp': \n                if validate_totp_code(mfa_methods['totp'], totp_box.text):\n                    return mfa_methods['totp'], password_box.text\n                else:\n                    mfa_error = \"Incorrect code entered. Please try again.\"\n                    continue\n            elif mfa == 'fido':\n                return mfa_methods['fido'], password_box.text\n            else:\n                return None, \"\"\n\n\n    #!defFunction(anvil.users.mfa,!,email_address, password)!2: \"Display a form to collect two-factor authentication credentials from the user currently logging in by passing the function their email and password.\" [\"mfa_login_with_form\"]\n    def mfa_login_with_form(email, password):\n        mfa_panel = LinearPanel()\n\n        mfa_types = get_available_mfa_types(email, password)\n\n        maybe_login_button = []\n        \n        if 'totp' in mfa_types:\n            totp_box = TextBox(placeholder=\"Enter 6-digit code\", align=\"center\", font=\"monospace\")\n            totp_box.set_event_handler(\"pressed_enter\", lambda **e: mfa_panel.raise_event('x-close-alert', value=get_totp_mfa_login(totp_box.text)))\n            totp_box.set_event_handler(\"show\", lambda **e: totp_box.focus())\n            mfa_panel.add_component(Label(text=\"Please enter the 2-factor authentication code from your Authenticator app\"))\n            mfa_panel.add_component(totp_box)\n            maybe_login_button = [(\"Log In\", 'totp', 'success')]\n\n        if 'fido' in mfa_types:\n            def use_fido(**e):\n                val = get_fido_mfa_login(email, password)\n                if val:\n                    mfa_panel.raise_event(\"x-close-alert\", value=val)\n\n            \n            if webauthn.is_webauthn_available():\n                fido_link = Link(text=\"Use hardware token\", icon=\"fa:lock\")\n                fido_link.set_event_handler(\"click\", use_fido)\n                mfa_panel.add_component(fido_link)\n            else:\n                mfa_panel.add_component(Label(text=\"Hardware token unavailable\", icon=\"fa:lock\", tooltip=\"Is this page running in an iframe or an unsupported browser?\"))\n\n\n        if not mfa_types:\n            mfa_panel.add_component(Label(text=\"No authentication methods available.\"))\n\n        if not mfa_types or get_client_config().get(\"allow_mfa_email_reset\", False):\n            mfa_reset_link = Link(text=\"Reset 2-factor authentication by email\")\n            mfa_reset_link.set_event_handler('click', lambda **e: mfa_panel.raise_event('x-close-alert', value='reset_mfa'))\n            mfa_panel.add_component(mfa_reset_link)\n\n        r = alert(mfa_panel, title=\"2-Factor Authentication\", buttons=maybe_login_button + [(\"Cancel\", None, 'default')], dismissible=False)\n\n        if r == 'totp':\n            return get_totp_mfa_login(totp_box.text)\n        else:\n            return r\n\n\n    #!defFunction(anvil.users.mfa,!,[allow_cancel=False])!2: \"Display a form for the user to configure 2-factor authentication.\\n\\nallow_cancel: if True, the signup form has a Cancel button that the user can use to dismiss the form.\" [\"configure_mfa_with_form\"]\n    def configure_mfa_with_form(allow_cancel=False):\n\n        error = None\n        while True:\n            mfa_method, password = _configure_mfa(None, error, True, allow_cancel, \"Save\")\n\n            if mfa_method:\n                try:\n                    add_mfa_method(password, mfa_method)\n                    alert(\"Your two-factor authentication configuration has been reset.\")\n                    return True\n                except AuthenticationFailed as e:\n                    error = e.args[0]\n                except Exception as e:\n                    error = str(e)\n            else:\n                return None\n";Sk.builtinFiles.files["anvil-services\/anvil\/users\/mfa\/webauthn.js"] = "\nvar $builtinmodule = window.memoise('anvil.users.mfa.webauthn', function() {\n    var mod = {};\n\n    let getCredentials = () => {\n        if (navigator.credentials) {\n            return navigator.credentials;\n        } else {\n            if (window.anvilParams && window.anvilParams.inIDE) {\n                throw new Sk.builtin.Exception(\"Cannot use hardware token authentication in the Anvil Editor - visit the app URL directly to test two-factor authentication.\");\n            } else {\n                throw new Sk.builtin.Exception(\"Cannot use hardware token authentication here - is the app running in a cross-origin iframe?\");\n            }\n        }\n    };\n\n    mod[\"is_webauthn_available\"] = new Sk.builtin.func(() => {\n        return !!navigator.credentials;\n    });\n\n    mod[\"create\"] = new Sk.builtin.func(function(pyOptions) {\n        var options = Sk.ffi.remapToJs(pyOptions);\n\n        options.publicKey.challenge = base64DecToArr(options.publicKey.challenge);\n        options.publicKey.user.id = base64DecToArr(options.publicKey.user.id);\n\n        return PyDefUtils.suspensionFromPromise(getCredentials().create(options).then(function(r) {\n            return {\n                attestationObject: base64EncArr(new Uint8Array(r.response.attestationObject)),\n                clientDataJSON: base64EncArr(new Uint8Array(r.response.clientDataJSON)),\n            };\n        }).catch(function(e) {\n            return null;\n        }));\n    });\n\n    mod[\"get\"] = new Sk.builtin.func(function(pyOptions) {\n        var options = Sk.ffi.remapToJs(pyOptions);\n\n        options.publicKey.challenge = base64DecToArr(options.publicKey.challenge);\n        for (var i in options.publicKey.allowCredentials) {\n            options.publicKey.allowCredentials[i].id = base64DecToArr(options.publicKey.allowCredentials[i].id);\n        }\n\n        return PyDefUtils.suspensionFromPromise(getCredentials().get(options).then(function(r) {\n            return {\n                authenticatorData: base64EncArr(new Uint8Array(r.response.authenticatorData)),\n                clientDataJSON: base64EncArr(new Uint8Array(r.response.clientDataJSON)),\n                signature: base64EncArr(new Uint8Array(r.response.signature)),\n            };\n        }).catch(function(e) {\n            return null;\n        }));\n    });\n\n\n    return mod;\n});";Sk.builtinFiles.files["anvil-services\/anvil\/users\/config.py"] = "import anvil\n\n_config = None\n\ndef get_client_config():\n    global _config\n    if _config is None:\n        _config = anvil._get_service_client_config(\"\/runtime\/services\/anvil\/users.yml\")\n    return _config\n";window.loadApp({"app":{"allow_embedding":false,"dependency_code":{},"package_name":"Actigo_Missouri","modules":[],"name":"Actigo Missouri","startup_form":"Form1","dependency_order":[],"theme":{"html":{"standard-page.html":"<link href=\"https:\/\/fonts.googleapis.com\/css?family=Roboto:300,400,500\" rel=\"stylesheet\" rel=\"preload\" as=\"font\" crossorigin=\"anonymous\">\n\n<div class=\"structure\">\n  <div class=\"app-bar\" anvil-drop-container=\".anvil-container\" anvil-drop-redirect=\".placeholder\">\n    <a class=\"sidebar-toggle\" anvil-if-slot-empty=\"top-left-btn\" anvil-hide-if-slot-empty=\"left-nav\" anvil-drop-slot=\"top-left-btn\" href=\"javascript:void(0)\"><i class=\"fa fa-bars\"><\/i><\/a>\n    <a class=\"sidebar-toggle anvil-designer-only\" anvil-if-slot-empty=\"top-left-btn\" anvil-if-slot-empty=\"left-nav\" anvil-drop-slot=\"top-left-btn\"><i class=\"fa fa-blank\"><\/i><\/a>\n    <div class=\"top-left-btn\" anvil-slot=\"top-left-btn\"><\/div>\n    <div class=\"title\" anvil-slot=\"title\">\n      <div class=\"placeholder anvil-designer-only\" anvil-if-slot-empty=\"title\" anvil-drop-here>Drop title here<\/div>\n    <\/div>\n    <div class=\"app-bar-nav\" anvil-slot=\"nav-right\">\n      <div class=\"placeholder anvil-designer-only\" anvil-if-slot-empty=\"nav-right\" anvil-drop-here>Drop a FlowPanel here<\/div>\n    <\/div>\n    <div style=\"clear:both\"><\/div>\n  <\/div>\n\n  <div class=\"nav-holder\">\n    <div class=\"left-nav anvil-measure-this\" anvil-slot-repeat=\"left-nav\" anvil-drop-container=\">.anvil-container\">\n    <\/div>\n    <div class=\"left-nav-placeholder anvil-designer-only\" anvil-if-slot-empty=\"left-nav\" anvil-drop-slot=\"left-nav\">\n      <div class=\"prompt\">To add a sidebar, drop a ColumnPanel here.<\/div>\n    <\/div>\n\n    <div class=\"content\">\n      <div anvil-slot-repeat=\"default\" class=\"anvil-measure-this\"><\/div>\n      <div class=\"placeholder drop-here\" anvil-if-slot-empty=\"default\" anvil-drop-slot=\"default\">Drop a ColumnPanel here.<\/div>\n    <\/div>\n  <\/div>\n  <div class=\"nav-shield\"><\/div>\n<\/div>\n<div anvil-drop-default anvil-drop-redirect=\".placeholder\" anvil-drop-container=\".anvil-container\"><\/div>\n \n<script>\n  function hideSidebar() {\n    var ln = $('.structure > .nav-holder > .left-nav');\n    ln.animate({left: -ln.outerWidth()}, function() {\n      ln.removeClass(\"in-transition shown\").addClass(\"hidden\");\n      $('.nav-shield').removeClass(\"shown\");\n      $(window).trigger('resize');\n    });\n  }\n  function showSidebar() {\n    var ln = $('.structure > .nav-holder > .left-nav');\n    $('.nav-shield').addClass(\"shown\");\n    ln.addClass(\"shown\").removeClass(\"hidden\").css({left: \"-100%\"}).css({left: -ln.outerWidth()}).animate({left: 0}, function() {\n      ln.removeClass(\"in-transition\");\n    });\n    $(window).trigger('resize');\n  }\n  $('.sidebar-toggle, .nav-shield').off('click').on('click', function() {\n    var ln = $('.structure > .nav-holder > .left-nav');\n    if (ln.is(\":visible\") || $('.nav-shield').is(\".shown\")) {\n      hideSidebar();\n    } else if(!ln.is(\":empty\")) {\n      showSidebar();\n    }\n  });\n  $('.left-nav').off('click').on('click', 'a, button', function() {\n    if ($('.nav-shield').is(\":visible\")) {\n      $('.nav-shield').trigger('click');\n    }\n  });\n<\/script>"},"color_scheme":{"Primary 700":"#1976D2","Black":"#000000","Secondary 500":"#FF9800","Gray 900":"#212121","Gray 100":"#F5F5F5","Gray 300":"#E0E0E0","Gray 800":"#424242","White":"#FFFFFF","Gray 200":"#EEEEEE","Gray 600":"#757575","Primary 500":"#2196F3","Secondary 700":"#F57C00","Gray 50":"#FAFAFA"}},"runtime_options":{"version":2,"client_version":"3"},"forms":[{"is_package":true,"container":{"type":"HtmlTemplate","properties":{"html":"@theme:standard-page.html"}},"components":[{"type":"ColumnPanel","properties":{"col_widths":"{}"},"name":"content_panel","layout_properties":{"slot":"default"},"components":[{"type":"Label","properties":{"role":"headline","bold":false,"align":"center","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":true,"border":"","italic":false,"font_size":null,"tooltip":"","text":"My Dashboard"},"name":"label_2","layout_properties":{"grid_position":"ZJBPHR,NGGTXR"}},{"type":"ColumnPanel","properties":{"role":"card","col_widths":"{}"},"name":"card_1","layout_properties":{"grid_position":"VNNTIX,AAVEJR"},"components":[{"type":"RepeatingPanel","properties":{"item_template":"Form1.ItemTemplate1"},"name":"repeating_panel_1","layout_properties":{"grid_position":"OAVCUA,FIOFGA"}}]},{"type":"ColumnPanel","properties":{"role":"card","col_widths":"{\"SJVUUZ\":10,\"YIHIOK\":50,\"TCNGCD\":10,\"MZPIXD\":50}","spacing_above":"small","background":"theme:Gray 50","wrap_on":"mobile","col_spacing":"medium","foreground":"","spacing_below":"small","visible":true,"border":"","tooltip":""},"name":"card_2","layout_properties":{"grid_position":"WKDIPM,SAHOWQ"},"components":[{"type":"Button","properties":{"role":null,"bold":false,"align":"center","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":true,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":"add link"},"name":"button_1","layout_properties":{"grid_position":"OFFNSG,WHRFUE"},"event_bindings":{"click":"button_1_click"}},{"type":"Label","properties":{"role":null,"bold":false,"align":"left","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"font_size":null,"tooltip":"","text":"Link title"},"name":"label_4","layout_properties":{"grid_position":"OWAYUA,TCNGCD"}},{"type":"TextBox","properties":{"role":null,"bold":false,"align":"left","placeholder":"Link title","spacing_above":"small","background":"","type":"text","underline":false,"font":"","hide_text":false,"foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":""},"name":"text_box_1","layout_properties":{"grid_position":"OWAYUA,MZPIXD"}},{"type":"Label","properties":{"role":null,"bold":false,"align":"left","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"font_size":null,"tooltip":"","text":"Link URL"},"name":"label_3","layout_properties":{"grid_position":"AAVJAZ,SJVUUZ"},"event_bindings":{"hide":"label_3_hide"}},{"type":"TextBox","properties":{"role":null,"bold":false,"align":"left","placeholder":"Link URL","spacing_above":"small","background":"","type":"text","underline":false,"font":"","hide_text":false,"foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":"https:\/\/"},"name":"text_box_2","layout_properties":{"grid_position":"AAVJAZ,YIHIOK"}},{"type":"Button","properties":{"role":null,"bold":false,"align":"center","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":"cancel"},"name":"button_3","layout_properties":{"grid_position":"HRFKTV,YGOLUT"},"event_bindings":{"click":"button_3_click"}},{"type":"Button","properties":{"role":null,"bold":false,"align":"center","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":false,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":"add"},"name":"button_2","layout_properties":{"grid_position":"HRFKTV,LADFIM"},"event_bindings":{"click":"button_2_click"}}]}]},{"type":"FlowPanel","properties":{},"name":"navbar_links","layout_properties":{"slot":"nav-right"}},{"type":"Label","properties":{"role":null,"bold":false,"align":"left","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":true,"border":"","italic":false,"font_size":null,"tooltip":"","text":"Actigo.py"},"name":"label_1","layout_properties":{"slot":"title"}}],"code":"from ._anvil_designer import Form1Template\nfrom anvil import *\nimport anvil.users\nimport anvil.server\nimport anvil.tables as tables\nimport anvil.tables.query as q\nfrom anvil.tables import app_tables\n\nclass Form1(Form1Template):\n\n  def __init__(self, **properties):\n    # Set Form properties and Data Bindings.\n    self.init_components(**properties)\n    anvil.users.login_with_form(allow_cancel= False)\n    # Any code you write here will run when the form opens.\n    self.repeating_panel_1.items = anvil.server.call('get_links')\n    \n\n  def button_1_click(self, **event_args):\n    \"\"\"This method is called when the button is clicked\"\"\"\n    self.text_box_1.visible = True\n    self.text_box_2.visible = True\n    self.label_3.visible = True\n    self.label_4.visible = True\n    self.button_1.visible = False\n    self.button_3.visible = True\n    self.button_2.visible = True\n\n  def button_3_click(self, **event_args):\n    \"\"\"This method is called when the button is clicked\"\"\"\n    self.text_box_1.visible = False\n    self.text_box_2.visible = False\n    self.label_3.visible = False\n    self.label_4.visible = False\n    self.button_1.visible = True\n    self.button_3.visible = False\n    self.button_2.visible = False\n\n  def button_2_click(self, **event_args):\n    \"\"\"This method is called when the button is clicked\"\"\"\n    anvil.server.call('new_link', self.text_box_1.text, self.text_box_2.text)\n    open_form('Form1')\n\n\n\n\n\n","class_name":"Form1"},{"container":{"type":"ColumnPanel","properties":{"col_widths":"{}"}},"components":[{"type":"ColumnPanel","properties":{"role":"card","col_widths":"{}","spacing_above":"small","background":"theme:Gray 100","wrap_on":"mobile","col_spacing":"medium","foreground":"","spacing_below":"small","visible":true,"border":"","tooltip":""},"name":"card_1","layout_properties":{"grid_position":"MXESQW,ABHGFC"},"components":[{"type":"Label","properties":{},"name":"label_1","layout_properties":{"grid_position":"QJBPGQ,XKFLJA"},"data_bindings":[{"property":"text","code":"self.item['LinkName']"}]},{"type":"Button","properties":{"role":null,"bold":false,"align":"center","spacing_above":"small","background":"","icon":"","underline":false,"font":"","icon_align":"left","foreground":"","spacing_below":"small","visible":true,"border":"","italic":false,"enabled":true,"font_size":null,"tooltip":"","text":"delete"},"name":"button_1","layout_properties":{"grid_position":"QJBPGQ,OMDYED"},"event_bindings":{"click":"button_1_click"}},{"type":"Link","properties":{"role":null,"bold":true,"align":"left","col_widths":"","spacing_above":"small","background":"","icon":"","wrap_on":"mobile","underline":false,"font":"","col_spacing":"medium","icon_align":"left","foreground":"","url":"","spacing_below":"small","visible":true,"border":"","italic":false,"font_size":null,"tooltip":"","text":"Open in new tab"},"name":"link_1","layout_properties":{"grid_position":"GSYXSW,PGKFXO"},"data_bindings":[{"property":"url","code":"self.item['LinkURL']"}]}]}],"is_package":true,"item_type":{"table_id":66511},"code":"from ._anvil_designer import ItemTemplate1Template\nfrom anvil import *\nimport anvil.users\nimport anvil.server\nimport anvil.tables as tables\nimport anvil.tables.query as q\nfrom anvil.tables import app_tables\n\nclass ItemTemplate1(ItemTemplate1Template):\n  def __init__(self, **properties):\n    # Set Form properties and Data Bindings.\n    self.init_components(**properties)\n\n    # Any code you write here will run when the form opens.\n    if self.item['User'] != anvil.users.get_user()['email']:\n      self.visible = False\n    \n\n  def button_1_click(self, **event_args):\n    \"\"\"This method is called when the button is clicked\"\"\"\n    self.item.delete()\n    self.remove_from_parent()\n\n","class_name":"Form1.ItemTemplate1"}],"services":[{"source":"\/runtime\/services\/tables.yml","client_config":{}},{"source":"\/runtime\/services\/anvil\/users.yml","client_config":{"allow_signup":true,"enable_automatically":true,"use_email":true,"confirm_email":true}}]},"appId":"EHVTAIUDOLMYNKJM","appOrigin":"https:\/\/actigo.anvil.app","ideOrigin":"https:\/\/anvil.works"}, anvilServicePreloadModules);window.openForm("Form1")});
+  </script>
+  
+</body>
+</html>
